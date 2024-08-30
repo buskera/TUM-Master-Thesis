@@ -48,8 +48,8 @@ check_edge_density <- function(image_path) {
   })
 }
 
-# Function to calculate luminance entropy
-check_luminance <- function(image_path) {
+# Function to calculate saturation
+check_saturation <- function(image_path) {
   tryCatch({
     # Load the image
     img <- load.image(image_path)
@@ -101,7 +101,7 @@ analyze_image <- function(image_path, nickname, industry) {
   visual_complexity <- check_visual_complexity(image_path)
   color_harmony <- check_color_harmony(image_path)
   edge_density <- check_edge_density(image_path)
-  luminance <- check_luminance(image_path)
+  saturation <- check_saturation(image_path)
   contrast <- check_contrast(image_path)
   
   # Create optimized HTML for displaying the image in the table
@@ -113,7 +113,7 @@ analyze_image <- function(image_path, nickname, industry) {
     Visual_Complexity = visual_complexity,
     Color_Harmony = color_harmony,
     Edge_Density = edge_density,
-    Luminance = luminance,
+    Saturation = saturation,
     Contrast = contrast,
     stringsAsFactors = FALSE
   )
@@ -153,14 +153,14 @@ image_analysis_results %>%
     title = "Visual Metrics Analysis for Traditional Advertisements",
     subtitle = "Comparison of Visual Complexity, Color Harmony, Edge Density, Luminance Entropy, and Contrast across Industries"
   ) %>%
-  fmt_number(columns = c(Visual_Complexity, Color_Harmony, Edge_Density, Luminance, Contrast), decimals = 4) %>%
+  fmt_number(columns = c(Visual_Complexity, Color_Harmony, Edge_Density, Saturation, Contrast), decimals = 4) %>%
   cols_label(
     Image = "Advertisement Image",
     Industry = "Industry",
     Visual_Complexity = "Visual Complexity",
     Color_Harmony = "Color Harmony",
     Edge_Density = "Edge Density",
-    Luminance = "Saturation",
+    Saturation = "Saturation",
     Contrast = "Contrast"
   ) %>%
   cols_align(
